@@ -19,7 +19,8 @@ public class Main {
                     .addEventListener(new PMListener())
                     .buildBlocking();
 
-            Bot.bot.getPresence().setStatus(OnlineStatus.INVISIBLE);
+
+            Bot.bot.getPresence().setStatus(OnlineStatus.IDLE);
 
             FirebaseStorage.init();
             Scheduler.init();
