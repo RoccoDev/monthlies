@@ -1,0 +1,1 @@
+worker: ls target/ && sh target/bin/worker
