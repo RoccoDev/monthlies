@@ -16,7 +16,7 @@ public class PMListener extends ListenerAdapter {
     @Override
     public void onMessageReceived(MessageReceivedEvent evt) {
         if(!evt.isFromType(ChannelType.PRIVATE)) return;
-        String message = evt.getMessage() == null ? "" : evt.getMessage().getContentStripped();
+        String message = evt.getMessage() == null ? "" : evt.getMessage().getContentRaw();
         long authorId = evt.getAuthor().getIdLong();
 
         String[] data = message.split(" ");
