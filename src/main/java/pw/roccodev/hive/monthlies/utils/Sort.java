@@ -14,10 +14,10 @@ public class Sort {
         list.sort(Map.Entry.comparingByValue());
 
         LinkedHashMap<String, Mode> result = new LinkedHashMap<>();
-        int count = 0;
+        int count = list.size();
         for (Map.Entry<Mode, V> entry : list) {
             Mode k = entry.getKey();
-            k.place = ++count;
+            k.place = --count;
             result.put(k.UUID, k);
         }
 
