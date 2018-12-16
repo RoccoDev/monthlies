@@ -12,10 +12,10 @@ public class TimvData extends Mode {
     public TimvData(LeaderboardPlace current, JSONObject seasonData) {
         super(current, seasonData);
 
-        karma = longDiff(current.get("karma"), seasonData.get("karma"));
-        d_points = longDiff(current.get("detective"), seasonData.get("detective"));
-        t_points = longDiff(current.get("traitor"), seasonData.get("traitor"));
-        i_points = longDiff(current.get("innocent"), seasonData.get("innocent"));
+        karma = longDiff("karma", current, seasonData);
+        d_points = longDiff("detective", current, seasonData);
+        t_points = longDiff("traitor", current, seasonData);
+        i_points = longDiff("innocent", current, seasonData);
 
         most_change = seasonData.get("most_points") + " -> " + current.get("most_points");
 

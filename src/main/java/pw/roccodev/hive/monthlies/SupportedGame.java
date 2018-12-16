@@ -1,14 +1,15 @@
 package pw.roccodev.hive.monthlies;
 
 import pw.roccodev.hive.monthlies.modes.Mode;
+import pw.roccodev.hive.monthlies.modes.data.DrData;
 import pw.roccodev.hive.monthlies.modes.data.TimvData;
 
 public enum SupportedGame {
 
     // BED has its own worker
-    TIMV(TimvData.class);
+    TIMV(TimvData.class),
+    DR(DrData.class);
     /*
-    DR,
     SKY,
     HIDE,
     GNT,

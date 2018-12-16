@@ -13,8 +13,8 @@ public class Mode {
         username = (String) current.get("username");
     }
 
-    protected long longDiff(Object a, Object b) {
-        return (long) a - (long) b;
+    protected long longDiff(String key, LeaderboardPlace a, JSONObject b) {
+        return (long) a.get(key) - (long) b.get(key);
     }
 
     public long compare() { return 0; }
