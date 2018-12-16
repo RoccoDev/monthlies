@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>tk.roccodev.bots</groupId>
-  <artifactId>trackerbot</artifactId>
+  <groupId>pw.roccodev.hive</groupId>
+  <artifactId>monthlies</artifactId>
   <version>1.0-SNAPSHOT</version>
   <build>
     <plugins>
@@ -18,7 +18,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>tk.roccodev.bots.trackerbot.Main</mainClass>
+                  <mainClass>pw.roccodev.hive.monthlies.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -49,7 +49,7 @@
           <assembleDirectory>target</assembleDirectory>
           <programs>
             <program>
-              <mainClass>tk.roccodev.bots.trackerbot.Main</mainClass>
+              <mainClass>pw.roccodev.hive.monthlies.Main</mainClass>
               <name>worker</name>
             </program>
           </programs>
@@ -61,7 +61,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>tk.roccodev.bots.trackerbot.Main</mainClass>
+              <mainClass>pw.roccodev.hive.monthlies.Main</mainClass>
             </manifest>
           </archive>
         </configuration>
