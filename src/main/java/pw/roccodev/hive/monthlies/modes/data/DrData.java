@@ -11,7 +11,7 @@ public class DrData extends Mode {
     public DrData(LeaderboardPlace current, JSONObject seasonData) {
         super(current, seasonData);
 
-        points = longDiff("points", current, seasonData);
+        points = longDiff("total_points", current, seasonData);
         kills = longDiff("kills", current, seasonData);
         deaths = longDiff("deaths", current, seasonData);
         victories = longDiff("victories", current, seasonData);
