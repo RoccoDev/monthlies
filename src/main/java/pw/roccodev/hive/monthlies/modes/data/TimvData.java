@@ -17,7 +17,10 @@ public class TimvData extends Mode {
         t_points = longDiff("traitor", current, seasonData);
         i_points = longDiff("innocent", current, seasonData);
 
-        most_change = seasonData.get("mostPoints") + " -> " + current.get("mostPoints");
+
+        long seasonMost = (long) seasonData.get("mostPoints");
+        long currentMost = (long) current.get("mostPoints");
+        most_change = seasonMost == currentMost ? "--" : seasonMost + " -> " + currentMost;
 
 
     }

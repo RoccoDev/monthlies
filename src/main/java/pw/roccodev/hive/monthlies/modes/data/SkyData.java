@@ -17,7 +17,10 @@ public class SkyData extends Mode {
         deaths = longDiff("deaths", current, seasonData);
         victories = longDiff("victories", current, seasonData);
         played = longDiff("gamesplayed", current, seasonData);
-        most_change = seasonData.get("most_points") + " -> " + current.get("most_points");
+
+        long seasonMost = (long) seasonData.get("most_points");
+        long currentMost = (long) current.get("most_points");
+        most_change = seasonMost == currentMost ? "--" : seasonMost + " -> " + currentMost;
 
     }
 
