@@ -25,7 +25,7 @@ public class Scheduler {
             JobDetail update = JobBuilder.newJob(UpdateJob.class).withIdentity("update").build();
 
             Trigger trigger = newTrigger().withIdentity("trigger").startNow()
-                    .withSchedule(CronScheduleBuilder.cronSchedule("\t0 0 0/3 1/1 * ? *")).build();
+                    .withSchedule(CronScheduleBuilder.cronSchedule("0 0 10 1 * ?")).build();
 
 
             Trigger trigger2 = newTrigger()
