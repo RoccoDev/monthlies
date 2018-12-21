@@ -5,6 +5,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import pw.roccodev.hive.monthlies.SupportedGame;
 import pw.roccodev.hive.monthlies.utils.ResetMode;
+import pw.roccodev.hive.monthlies.utils.discord.SendWebhook;
 
 public class ResetJob implements Job {
 
@@ -18,5 +19,6 @@ public class ResetJob implements Job {
             ResetMode.run(game);
 
         }
+        SendWebhook.sendReset();
     }
 }

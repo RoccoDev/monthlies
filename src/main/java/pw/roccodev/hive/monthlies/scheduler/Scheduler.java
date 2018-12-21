@@ -23,6 +23,7 @@ public class Scheduler {
 
             JobDetail jobDetail = JobBuilder.newJob(ResetJob.class).withIdentity("reset").build();
             JobDetail update = JobBuilder.newJob(UpdateJob.class).withIdentity("update").build();
+            JobDetail webhook = JobBuilder.newJob(WebhookJob.class).withIdentity("webhook").build();
 
             Trigger trigger = newTrigger().withIdentity("trigger").startNow()
                     .withSchedule(CronScheduleBuilder.cronSchedule("0 0 10 1 * ?")).build();
@@ -34,9 +35,13 @@ public class Scheduler {
                     .withSchedule(CronScheduleBuilder.cronSchedule(" 	0 0/5 * 1/1 * ? *"))
                     .build();
 
+            Trigger hookTrigger = newTrigger().withIdentity("webhook").startNow()
+                    .withSchedule(CronScheduleBuilder.cronSchedule("0 0 8 1 1/1 ? *")).build();
+
             try {
                 sch.scheduleJob(jobDetail, trigger);
                 sch.scheduleJob(update, trigger2);
+                sch.scheduleJob(webhook, hookTrigger);
             } catch (SchedulerException e) {
                 e.printStackTrace();
             }

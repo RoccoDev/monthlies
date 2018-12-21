@@ -13,13 +13,17 @@
             <id>jcenter</id>
             <url>http://jcenter.bintray.com</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
-            <groupId>net.dv8tion</groupId>
-            <artifactId>JDA</artifactId>
-            <version>3.7.1_404</version>
+            <groupId>com.github.MrPowerGamerBR</groupId>
+            <artifactId>TemmieWebhook</artifactId>
+            <version>59de40</version>
         </dependency>
         <dependency>
             <groupId>com.google.firebase</groupId>
