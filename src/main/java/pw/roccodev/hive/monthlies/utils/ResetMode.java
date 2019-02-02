@@ -27,7 +27,9 @@ public class ResetMode {
         Bucket dataContainer = StorageClient.getInstance(FirebaseApp.getInstance(game.name())).bucket();
         long latest = 0;
         Page<Blob> otherData = dataContainer.list();
-        while(otherData.hasNextPage()) latest++;
+        for(Blob ignored : otherData.iterateAll()) {
+            latest++;
+        }
         LazyObject season;
         try {
             season = new LazyObject(null, new URL(SEASON_URL.replace("{g}", game.name().toLowerCase())));
