@@ -6,6 +6,9 @@ import org.quartz.JobExecutionException;
 import pw.roccodev.hive.monthlies.SupportedGame;
 import pw.roccodev.hive.monthlies.utils.ResetMode;
 import pw.roccodev.hive.monthlies.utils.discord.SendWebhook;
+import tk.roccodev.hiveserver.bmont.LBs;
+
+import java.io.IOException;
 
 public class ResetJob implements Job {
 
@@ -16,5 +19,12 @@ public class ResetJob implements Job {
             ResetMode.run(game);
         }
         SendWebhook.sendReset();
+
+        // Bedwars
+        try {
+            LBs.doTheTing();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

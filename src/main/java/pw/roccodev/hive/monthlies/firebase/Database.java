@@ -3,6 +3,7 @@ package pw.roccodev.hive.monthlies.firebase;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseOptions;
 import pw.roccodev.hive.monthlies.SupportedGame;
+import tk.roccodev.nightfallbot.Test;
 
 import java.io.IOException;
 
@@ -21,6 +22,7 @@ public class Database {
                         g.name());
             }
 
+            Test.run(creds);
 
         } catch (IOException e) {
             e.printStackTrace();

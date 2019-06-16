@@ -13,7 +13,9 @@ import pw.roccodev.hive.monthlies.SupportedGame;
 import pw.roccodev.hive.monthlies.modes.Mode;
 import pw.roccodev.hive.monthlies.utils.MergeLb;
 import pw.roccodev.hive.monthlies.utils.Sort;
+import tk.roccodev.hiveserver.bmont.LBs;
 
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -72,6 +74,13 @@ public class UpdateJob implements Job {
             ref.setValueAsync(toSet);
 
 
+        }
+
+        // Bedwars
+        try {
+            LBs.updateTheTing();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
