@@ -14,6 +14,7 @@ import pw.roccodev.hive.monthlies.modes.Mode;
 import pw.roccodev.hive.monthlies.utils.MergeLb;
 import pw.roccodev.hive.monthlies.utils.Sort;
 import tk.roccodev.hiveserver.bmont.LBs;
+import tk.roccodev.hiveserver.bmont.Winstreaks;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -79,7 +80,8 @@ public class UpdateJob implements Job {
         // Bedwars
         try {
             LBs.updateTheTing();
-        } catch (IOException e) {
+            Winstreaks.run();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
