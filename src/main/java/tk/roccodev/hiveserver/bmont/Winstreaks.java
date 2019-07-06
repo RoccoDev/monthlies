@@ -32,20 +32,13 @@ public class Winstreaks {
 		String url4 = mode.equalsIgnoreCase("BED") ? uri4 + "/win_streak" : uri4 + "/" + mode.toUpperCase() + "/win_streak";
 		String url5 = mode.equalsIgnoreCase("BED") ? uri5 + "/win_streak" : uri5 + "/" + mode.toUpperCase() + "/win_streak";
 		
-		JSONObject hist = APIUtils.getObject(APIUtils.readURL(new URL("https://bedwarstoolkit-streaks-beds.firebaseio.com/" + mode + ".json")));
+		//JSONObject hist = APIUtils.getObject(APIUtils.readURL(new URL("https://bedwarstoolkit-streaks-beds.firebaseio.com/" + mode + ".json")));
 		
 		final FirebaseDatabase database = FirebaseDatabase.getInstance(Test.streakApp);
 		DatabaseReference newOne = database.getReference(mode);
-		DatabaseReference newOneHist = FirebaseDatabase.getInstance(Test.histoStreakApp).getReference(mode);
-		HashMap<SavedWinstreakEarly, Long> histBefore = new HashMap<>();
-		LinkedHashMap<String, WinstreakStructure> histAfter = new LinkedHashMap<>();
-		
-		for(Object e : hist.entrySet()) {
-			Map.Entry<String, Object> entry = (Map.Entry<String, Object>)e;
-			JSONObject v = (JSONObject) entry.getValue();
-			histBefore.put(new SavedWinstreakEarly((String)v.get("name"), entry.getKey(), (long)v.get("winstreak")), (long)v.get("winstreak")); 
-			
-		}
+		//DatabaseReference newOneHist = FirebaseDatabase.getInstance(Test.histoStreakApp).getReference(mode);
+		//HashMap<SavedWinstreakEarly, Long> histBefore = new HashMap<>();
+		//LinkedHashMap<String, WinstreakStructure> histAfter = new LinkedHashMap<>();
 		
 		JSONObject o = APIUtils.getObject(APIUtils.readURL(new URL(url)));
 		JSONArray a = (JSONArray) o.get("leaderboard");
@@ -76,29 +69,10 @@ public class Winstreaks {
 			long place = (long) j.get("humanIndex");
 			long streak = (long) j.get("win_streak");
 			
-			if(!hist.containsKey(uuid)) {
-				histBefore.put(new SavedWinstreakEarly(name, uuid, streak), streak);
-			}
-			else {
-				JSONObject j2 = (JSONObject) hist.get(uuid);
-				if((long)j2.get("winstreak") < streak) {
-					histBefore.put(new SavedWinstreakEarly(name, uuid, streak), streak);
-				}
-				
-			}
-			
 			toUpdate.put(uuid, new WinstreakStructure(name, streak, place));
-		}
-		
-		Map<SavedWinstreakEarly, Long> sorted = LBs.sortByValue(histBefore);
-		int i = sorted.size();
-		for(Map.Entry<SavedWinstreakEarly, Long> e : sorted.entrySet()) {
-			histAfter.put(e.getKey().uuid, new WinstreakStructure(e.getKey().name, e.getKey().streak, i--));
 		}
 	
 		newOne.setValueAsync(toUpdate);
-		newOneHist.setValueAsync(histAfter);
-		
 	}
 	
 	
