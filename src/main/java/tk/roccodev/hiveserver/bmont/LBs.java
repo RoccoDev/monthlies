@@ -39,7 +39,8 @@ public class LBs {
 		JSONObject data = APIUtils.getObject(APIUtils.readURL(new URL("https://bedwarstoolkit-season-data.firebaseio.com/.json")));
 		JSONObject lastData = APIUtils.getObject(APIUtils.readURL(new URL("https://monthlies-bed-kf.firebaseio.com/l.json")));
 		DatabaseReference lastDataRef = kfDb.getReference("l");
-	
+
+		Disqualified.download();
 		// JSONObject disqualified = APIUtils.getObject(APIUtils.readURL(new URL("https://roccodev-misc.firebaseio.com/disqualified.json")));
 		// JSONArray arr = (JSONArray) disqualified.get("array")
 		HashMap<String, GraphStructure> graphsToAdd = new HashMap<>();
@@ -69,7 +70,7 @@ public class LBs {
 			JSONObject j = (JSONObject) o1;
 			System.out.println(j.get("username"));
 			if(!data.containsKey((String)j.get("UUID"))) continue;
-			// if(arr.contains((String)j.get("UUID"))) continue;
+			if(Disqualified.isDisqualified(j.get("UUID").toString())) continue;
 			JSONObject child = (JSONObject) data.get((String)j.get("UUID"));
 			long startPts = (long) child.get("startPoints");
 			long now = (long)j.get("total_points");
