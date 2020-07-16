@@ -12,12 +12,8 @@ public class ResetJob implements Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         for(SupportedGame game : SupportedGame.values()) {
-            // TODO Run update
-
-
             // Replace old data with the current leaderboard
             ResetMode.run(game);
-
         }
         SendWebhook.sendReset();
     }

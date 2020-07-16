@@ -8,12 +8,12 @@ public enum SupportedGame {
     // BED has its own worker
     TIMV(TimvData.class),
     DR(DrData.class),
-    GNT(GntData.class),
-    GNTM(GntData.class),
     SKY(SkyData.class),
     HIDE(HideData.class),
-    CAI(CaiData.class),
-    BP(BpData.class);
+    BP(BpData.class),
+    GRAV(GravData.class),
+    SP(SpData.class),
+    DRAW(DrawData.class);
 
     private Class<? extends Mode> dataClass;
 
@@ -23,5 +23,12 @@ public enum SupportedGame {
 
     public Class<? extends Mode> getDataClass() {
         return dataClass;
+    }
+
+    public String getDbName() {
+        if(this == SupportedGame.GRAV) return "gnt";
+        else if(this == SupportedGame.DRAW) return "gntm";
+        else if(this == SupportedGame.SP) return "cai";
+        else return name().toLowerCase();
     }
 }

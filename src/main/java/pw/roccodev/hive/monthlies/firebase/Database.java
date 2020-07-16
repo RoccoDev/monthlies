@@ -14,9 +14,10 @@ public class Database {
         try {
             GoogleCredentials creds = Credentials.get();
             for(SupportedGame g : SupportedGame.values()) {
+                String name = g.getDbName();
                 initializeApp(new FirebaseOptions.Builder().setCredentials(creds)
-                        .setDatabaseUrl("https://monthlies-" + g.name().toLowerCase() + ".firebaseio.com")
-                                .setStorageBucket("monthlies-" + g.name().toLowerCase() + ".appspot.com").build(),
+                        .setDatabaseUrl("https://monthlies-" + name + ".firebaseio.com")
+                                .setStorageBucket("monthlies-" + name + ".appspot.com").build(),
                         g.name());
             }
 

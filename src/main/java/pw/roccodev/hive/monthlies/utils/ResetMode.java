@@ -32,7 +32,7 @@ public class ResetMode {
         }
         LazyObject season;
         try {
-            season = new LazyObject(null, new URL(SEASON_URL.replace("{g}", game.name().toLowerCase())));
+            season = new LazyObject(null, new URL(SEASON_URL.replace("{g}", game.getDbName())));
         } catch (MalformedURLException e) {
             return;
         }

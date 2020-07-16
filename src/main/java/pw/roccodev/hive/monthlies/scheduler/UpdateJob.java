@@ -32,7 +32,7 @@ public class UpdateJob implements Job {
             List<LeaderboardPlace> current = MergeLb.getUpdate(g.name());
             LazyObject season;
             try {
-                season = new LazyObject(null, new URL(SEASON_URL.replace("{g}", code)));
+                season = new LazyObject(null, new URL(SEASON_URL.replace("{g}", g.getDbName())));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
                 continue;
