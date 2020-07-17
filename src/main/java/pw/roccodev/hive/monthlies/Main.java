@@ -13,6 +13,4 @@ public class Main {
         System.out.println("Running");
         GlobalConfiguration.setUserAgent("Monthlies Worker/1.0");
     }
-
-
 }

@@ -12,7 +12,7 @@ public class MergeLb {
         Game g = new Game(game);
         List<LeaderboardPlace> result = new ArrayList<>();
 
-        for(int i = 0; i <= 400; i += 200) {
+        for(int i = 0; i <= 800; i += 200) {
             result.addAll(g.getLeaderboard(i, i + 200).getPlayers());
         }
 
@@ -20,15 +20,7 @@ public class MergeLb {
     }
 
     public static List<LeaderboardPlace> getReset(String game) {
-        Game g = new Game(game);
-        List<LeaderboardPlace> result = new ArrayList<>();
-
-        for(int i = 0; i <= 400; i += 200) {
-            int add = i == 400 ? 100 : 200;
-            result.addAll(g.getLeaderboard(i, i + add).getPlayers());
-        }
-
-        return result;
+        return getUpdate(game);
     }
 
 }

@@ -13,7 +13,9 @@ public enum SupportedGame {
     BP(BpData.class),
     GRAV(GravData.class),
     SP(SpData.class),
-    DRAW(DrawData.class);
+    DRAW(DrawData.class),
+    BD(BdData.class),
+    CR(CrData.class);
 
     private Class<? extends Mode> dataClass;
 
