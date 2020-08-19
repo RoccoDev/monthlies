@@ -22,10 +22,10 @@ import java.util.Map.Entry;
 
 public class LBs {
 	
-	private static String uri = "http://api.hivemc.com/v1/game/BED/leaderboard/0/200";
-	private static String uri2 = "http://api.hivemc.com/v1/game/BED/leaderboard/200/400";
-	private static String uri3 = "http://api.hivemc.com/v1/game/BED/leaderboard/400/500";
-	private static String uriUpdate = "http://api.hivemc.com/v1/game/BED/leaderboard/400/600";
+	private static String uri = "https://api.hivemc.com/v1/game/BED/leaderboard/0/200";
+	private static String uri2 = "https://api.hivemc.com/v1/game/BED/leaderboard/200/400";
+	private static String uri3 = "https://api.hivemc.com/v1/game/BED/leaderboard/400/500";
+	private static String uriUpdate = "https://api.hivemc.com/v1/game/BED/leaderboard/400/600";
 
 	public static void updateTheTing() throws IOException {
 		URL url = new URL(uri);
@@ -51,9 +51,7 @@ public class LBs {
 		HashMap<String, KillFarmingStructure> farmStr = new HashMap<>();
 		HashMap<String, Long> fKills = new HashMap<>();
 		HashMap<String, String> fNames = new HashMap<>();
-		
-		
-		
+
 		JSONObject o = APIUtils.getObject(APIUtils.readURL(url));
 		JSONArray a = (JSONArray) o.get("leaderboard");
 		
@@ -65,10 +63,8 @@ public class LBs {
 		
 		a.addAll(a2);
 		a.addAll(a3);
-		System.out.println(o.get("start") + " / " + a.size());
 		for(Object o1 : a) {
 			JSONObject j = (JSONObject) o1;
-			System.out.println(j.get("username"));
 			if(!data.containsKey((String)j.get("UUID"))) continue;
 			if(Disqualified.isDisqualified(j.get("UUID").toString())) continue;
 			JSONObject child = (JSONObject) data.get((String)j.get("UUID"));
@@ -134,8 +130,6 @@ public class LBs {
 			}
 			
 			farmStr.put((String)j.get("UUID"), new KillFarmingStructure(nowP, nowK, now, nowW, nowD));
-			
-			System.out.println(j.get("username") + " / "  + now + " / " + startPts + " / " + pDiff);
 			toUpdate.put(new BedStructureEarly((String)j.get("username"), pDiff, vDiff, gDiff, kDiff, dDiff, (String)j.get("UUID"), bDiff, tDiff), pDiff);
 			graphsToAdd.put((String)j.get("UUID"), new GraphStructure(pDiff, kDiff, dDiff, vDiff, gDiff, bDiff, tDiff));
 			
